@@ -16,4 +16,12 @@ class Questions {
     val listOfLists = listOf(
         MakingDecisions
     )
+
+    val dataTest = listOf(
+        Test("Тест \"Принятие решений\"","Оценкой правильности принятого руководителем решения являются не только хозяйственные показатели, но и поведение работников при достижении ими производственных целей, мера их активности, инициативы, коллективизма\n" +
+                "Данный тест поможет оценить, насколько Вы решительный человек и какого типа должны быть люди в Вашей команде.", MakingDecisions)
+    )
 }
+
+data class Question(val question: String, val answers: List<String>) // Класс для представления вопроса
+data class Test(val name: String, val description: String, val question: List<Question>)

@@ -80,7 +80,14 @@ class MainActivity : ComponentActivity() {
             sr = listOf<Question>()
             val currentQuestion = questions.get(questionNo)
             sr = listOf(
-                Question(currentQuestion.question, listOf(currentQuestion.answers[0], currentQuestion.answers[1], currentQuestion.answers[2]))
+                Question(
+                    currentQuestion.question,
+                    listOf(
+                        currentQuestion.answers[0],
+                        currentQuestion.answers[1],
+                        currentQuestion.answers[2]
+                    )
+                )
             )
             withContext(Dispatchers.Main) {
                 textView.setText("${currentQuestion.question} \n\n A) ${currentQuestion.answers[0]} \n\n B) ${currentQuestion.answers[1]} \n" +
@@ -94,12 +101,7 @@ class MainActivity : ComponentActivity() {
                 val res1 = A + E
                 val res2 = B + F
                 val res3 = C + D
-                Log.d("MyTag", "А = $A")
-                Log.d("MyTag", "B = $B")
-                Log.d("MyTag", "C = $C")
-                Log.d("MyTag", "D = $D")
-                Log.d("MyTag", "E = $E")
-                Log.d("MyTag", "F = $F")
+
                 val maxVariableName = when {
                     res1 > res2 && res1 > res3 -> "res1"
                     res2 > res1 && res2 > res3 -> "res2"
@@ -116,4 +118,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class Question(val question: String, val answers: List<String>) // Класс для представления вопроса
