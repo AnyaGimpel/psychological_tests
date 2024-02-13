@@ -21,7 +21,7 @@ class StartActivity : AppCompatActivity() {
         TestDesc.text = thisTest.description
 
         startButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MakingDecisionsTest::class.java)
             startActivity(intent)
         }
     }
