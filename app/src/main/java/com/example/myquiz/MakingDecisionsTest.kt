@@ -12,14 +12,15 @@ import kotlinx.coroutines.withContext
 
 class MakingDecisionsTest : ComponentActivity() {
 
-    var questionNo = 0
+    var questionNo = -1
     val questions = Questions().MakingDecisions
     var sr = listOf<Question>()
 
     private lateinit var buttonA: Button
     private lateinit var buttonB: Button
     private lateinit var buttonC: Button
-    private lateinit var textView: TextView
+    private lateinit var questionView: TextView
+    private lateinit var testName: TextView
 
     var A = 0
     var B = 0
@@ -35,7 +36,13 @@ class MakingDecisionsTest : ComponentActivity() {
         buttonA = findViewById(R.id.button)
         buttonB = findViewById(R.id.button2)
         buttonC = findViewById(R.id.button3)
-        textView = findViewById(R.id.textView)
+        questionView = findViewById(R.id.questionView)
+        testName = findViewById(R.id.testName)
+
+
+        CoroutineScope(Dispatchers.Main).launch {
+            updateQuestion()
+        }
 
         buttonA.setOnClickListener {
             if (questionNo % 2 == 0) {
@@ -89,7 +96,7 @@ class MakingDecisionsTest : ComponentActivity() {
                 )
             )
             withContext(Dispatchers.Main) {
-                textView.setText("${currentQuestion.question} \n\n A) ${currentQuestion.answers[0]} \n\n B) ${currentQuestion.answers[1]} \n" +
+                questionView.setText("${currentQuestion.question} \n\n A) ${currentQuestion.answers[0]} \n\n B) ${currentQuestion.answers[1]} \n" +
                         "\n" +
                         " C) ${currentQuestion.answers[2]}")
             }
@@ -110,7 +117,18 @@ class MakingDecisionsTest : ComponentActivity() {
                     res1 == res3 && res1 > res2 -> "res6"
                     else -> "None"
                 }
-                intent.putExtra("res", maxVariableName)
+
+                val resultText = when (maxVariableName) {
+                    "res1" -> "Вы не особенно решительный (в принятии решений) человек. Но Вас нельзя назвать и нерешительным. Вы действуете не всегда достаточно активно и быстро, но только потому, что считаете – дело того не стоит. Вам нравятся отважные люди. Но часто Вы оправдываете и нерешительных, считая, что их действия – результат не страха, а осмотрительности и осторожности."
+                    "res2" -> "Вы, безусловно, решительный (в принятии решений) человек. Вы слишком часто пренебрегаете вещами, которые считаете мелкими, незначительными. Но, несмотря на это, Вас ценят как самостоятельную и интересную личность. Если у Вас есть еще и чувство ответственности, то Вам часто поручают сложные задания, но в этом случае в Вашей группе должны быть люди другого типа, которые бы уравновешивали Вашу слишком большую активность. "
+                    "res3" -> "Вы боитесь не только принимать решения, но даже обдумывать их, страшась приближающихся событий. Ваше психологическое состояние нельзя назвать стабильным, благополучным. Часто Вы скорее ожидаете критики ваших действий, чем похвалы."
+                    "res4" -> " Вы решительный человек в зависимости от ситуации. Вы слишком часто пренебрегаете вещами, которые считаете мелкими, незначительными. Вы действуете не всегда достаточно активно и быстро, но только потому, что считаете – дело того не стоит. Тем не менее Вам часто поручают сложные задания, потому что вы умеете брать ответственность в важных вещах и проявлять в этом деле большую активность."
+                    "res5" -> "Вы, безусловно, решительный (в принятии решений) человек. Вы слишком часто пренебрегаете вещами, которые считаете мелкими, незначительными. Но, несмотря на это, Вас ценят как активную и прямолинейную личность. Но часто Вы ожидаете критики ваших действий, чем похвалы. Вы прете как танк,не думая в моменте о последствиях, но критика может поумерить ваш пыл. . Не нужно ли Вам все же лучше продумывать решения, которые Вы принимаете?"
+                    "res6" -> "Вы не особенно решительный (в принятии решений) человек. Вы действуете не всегда достаточно активно и быстро. Часто Вы скорее ожидаете критики ваших действий, чем похвалы. Вам нравятся отважные люди. Но часто Вы оправдываете и нерешительных, считая, что их действия – результат не страха, а осмотрительности и осторожности."
+                    else -> "No variable has the largest value"
+                }
+
+                intent.putExtra("res", resultText)
                 startActivity(intent)
             }
         }

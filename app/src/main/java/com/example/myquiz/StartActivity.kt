@@ -12,6 +12,10 @@ class StartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_start)
 
         val startButton: Button = findViewById(R.id.startButton)
+
+            // принять значение с MainActivity, в зависимости от него отобразить название и описание
+            // передать на активность теста
+
         val TestName: TextView = findViewById(R.id.TestName)
         val TestDesc: TextView = findViewById(R.id.TestDesc)
 
