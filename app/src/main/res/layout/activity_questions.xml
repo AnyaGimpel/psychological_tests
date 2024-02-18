@@ -9,7 +9,7 @@
         android:id="@+id/testName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="wertyu"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -22,11 +22,9 @@
         android:id="@+id/questionView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text=""
-        android:hyphenationFrequency="full"
+        android:text="qwertyui"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:gravity="fill_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,37 +35,37 @@
         android:id="@+id/button"
         android:layout_width="60dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="130dp"
         android:backgroundTint="@color/green"
         android:text="А"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/questionView" />
+        app:layout_constraintTop_toBottomOf="@+id/questionView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="60dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="130dp"
         android:backgroundTint="@color/red"
         android:text="В"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="60dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="130dp"
         android:backgroundTint="@color/purple_700"
         android:text="C"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/questionView" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

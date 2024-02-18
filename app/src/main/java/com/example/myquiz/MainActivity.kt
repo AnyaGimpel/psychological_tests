@@ -3,8 +3,11 @@ package com.example.myquiz
 import TestAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,12 +24,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val startButton: Button = findViewById(R.id.buttonStart)
-
-        startButton.setOnClickListener {
-            val intent = Intent(this, StartActivity::class.java)
-            startActivity(intent)
-        }
 
         val questions = Questions()
         testList = questions.dataTest
@@ -35,6 +32,18 @@ class MainActivity : ComponentActivity() {
         testRecyclerView.layoutManager = LinearLayoutManager(this)
         val testAdapter = TestAdapter(testList)
         testRecyclerView.adapter = testAdapter
+
+        val searchEditText: EditText = findViewById(R.id.searchTest)
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {}
+
+            override fun onTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {
+                // Вызов метода фильтрации данных в адаптере при изменении текста в поисковой строке
+                testAdapter.filter.filter(charSequence)
+            }
+
+            override fun afterTextChanged(editable: Editable?) {}
+        })
     }
 
 }

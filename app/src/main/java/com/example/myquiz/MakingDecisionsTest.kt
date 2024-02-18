@@ -3,6 +3,7 @@ package com.example.myquiz
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import kotlinx.coroutines.CoroutineScope
@@ -41,6 +42,10 @@ class MakingDecisionsTest : ComponentActivity() {
 
 
         CoroutineScope(Dispatchers.Main).launch {
+            val position = intent.getIntExtra("itemId",-1)
+            val questions = Questions()
+            var  thisTest = questions.dataTest[position]
+            testName.text = thisTest.name
             updateQuestion()
         }
 

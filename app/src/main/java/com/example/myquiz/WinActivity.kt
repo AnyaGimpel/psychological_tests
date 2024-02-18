@@ -11,8 +11,7 @@ class WinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_win)
 
-        val replayButton: Button = findViewById(R.id.replayButton)
-        val exitButton: Button = findViewById(R.id.exitButton)
+        val toMainButton: Button = findViewById(R.id.toMainButton)
         val resultTextView: TextView = findViewById(R.id.resultTextView)
 
         val intent = intent
@@ -21,13 +20,9 @@ class WinActivity : AppCompatActivity() {
 
         resultTextView.text = resultText
 
-        replayButton.setOnClickListener {
-            val intent = Intent(this, StartActivity::class.java)
+        toMainButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }
-
-        exitButton.setOnClickListener {
-            finishAffinity()
         }
     }
 }
