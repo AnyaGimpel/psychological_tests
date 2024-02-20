@@ -1,11 +1,15 @@
-package com.example.myquiz
+package com.example.myquiz.Tests
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.example.myquiz.Question
+import com.example.myquiz.Questions
+import com.example.myquiz.R
+import com.example.myquiz.WinActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,6 +24,8 @@ class MakingDecisionsTest : ComponentActivity() {
     private lateinit var buttonA: Button
     private lateinit var buttonB: Button
     private lateinit var buttonC: Button
+    private lateinit var button4: Button
+    private lateinit var button5: Button
     private lateinit var questionView: TextView
     private lateinit var testName: TextView
 
@@ -32,15 +38,24 @@ class MakingDecisionsTest : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test_three_answers)
+        setContentView(R.layout.activity_questions)
 
-        buttonA = findViewById(R.id.button)
+        buttonA = findViewById(R.id.button1)
         buttonB = findViewById(R.id.button2)
         buttonC = findViewById(R.id.button3)
+
+        //деактивируем ненужные кнопки
+        button4 = findViewById(R.id.button4)
+        button5 = findViewById(R.id.button5)
+        button4.visibility = View.INVISIBLE
+        button4.isEnabled = false
+        button5.visibility = View.INVISIBLE
+        button5.isEnabled = false
+
         questionView = findViewById(R.id.questionView)
         testName = findViewById(R.id.testName)
 
-
+        //Получаем id теста, определяем название теста, первый вопрос
         CoroutineScope(Dispatchers.Main).launch {
             val position = intent.getIntExtra("itemId",-1)
             val questions = Questions()
@@ -101,9 +116,10 @@ class MakingDecisionsTest : ComponentActivity() {
                 )
             )
             withContext(Dispatchers.Main) {
-                questionView.setText("${currentQuestion.question} \n\n A) ${currentQuestion.answers[0]} \n\n B) ${currentQuestion.answers[1]} \n" +
-                        "\n" +
-                        " C) ${currentQuestion.answers[2]}")
+                questionView.setText(currentQuestion.question)
+                buttonA.setText(currentQuestion.answers[0])
+                buttonB.setText(currentQuestion.answers[1])
+                buttonC.setText(currentQuestion.answers[2])
             }
         } else {
             withContext(Dispatchers.Main) {

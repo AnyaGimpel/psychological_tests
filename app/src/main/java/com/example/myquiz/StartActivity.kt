@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.myquiz.Tests.MakingDecisionsTest
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +32,7 @@ class StartActivity : AppCompatActivity() {
                 1 -> Intent(this, MakingDecisionsTest::class.java)
                 2 -> Intent(this, MakingDecisionsTest::class.java)
 
-                else -> {
-
-                }
+                else -> {}
             }
             if (intent is Intent) {
                 intent.putExtra("itemId", position)

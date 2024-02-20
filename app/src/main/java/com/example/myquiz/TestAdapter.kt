@@ -27,7 +27,6 @@ class TestAdapter(private val testList: List<Test>) : RecyclerView.Adapter<TestA
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, StartActivity::class.java)
             intent.putExtra("itemId", currentTest) // Используем позицию из исходного списка
-            //Log.d("TestAdapter", "Clicked on item at position: $currentTest")
             holder.itemView.context.startActivity(intent)
         }
     }

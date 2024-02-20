@@ -26,7 +26,7 @@
             android:name=".StartActivity"
             android:exported="false" />
         <activity
-            android:name=".MakingDecisionsTest"
+            android:name=".Tests.MakingDecisionsTest"
             android:exported="false" />
     </application>
 
