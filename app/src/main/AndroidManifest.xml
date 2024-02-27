@@ -28,6 +28,9 @@
         <activity
             android:name=".Tests.MakingDecisionsTest"
             android:exported="false" />
+        <activity
+            android:name=".Tests.DelegationTest"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.myquiz.Tests.DelegationTest
 import com.example.myquiz.Tests.MakingDecisionsTest
 
 class StartActivity : AppCompatActivity() {
@@ -29,10 +30,9 @@ class StartActivity : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = when (position) {
                 0 ->  Intent(this, MakingDecisionsTest::class.java)
-                1 -> Intent(this, MakingDecisionsTest::class.java)
-                2 -> Intent(this, MakingDecisionsTest::class.java)
+                1 -> Intent(this, DelegationTest::class.java)
 
-                else -> {}
+                else -> {Intent(this, MakingDecisionsTest::class.java)}
             }
             if (intent is Intent) {
                 intent.putExtra("itemId", position)
