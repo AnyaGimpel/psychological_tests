@@ -31,6 +31,12 @@
         <activity
             android:name=".Tests.DelegationTest"
             android:exported="false" />
+        <activity
+            android:name=".Tests.PersonalFactors"
+            android:exported="false" />
+        <activity
+            android:name=".Tests.TypeOfFutureProfession"
+            android:exported="false" />
     </application>
 
 </manifest>

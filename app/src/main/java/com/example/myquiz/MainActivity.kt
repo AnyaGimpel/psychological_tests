@@ -1,21 +1,13 @@
 package com.example.myquiz
 
 import TestAdapter
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
 
@@ -44,9 +36,11 @@ class MainActivity : ComponentActivity() {
 
             override fun afterTextChanged(editable: Editable?) {}
         })
+
     }
 
 }
+
 
 
 

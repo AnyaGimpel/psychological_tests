@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.myquiz.Tests.DelegationTest
 import com.example.myquiz.Tests.MakingDecisionsTest
+import com.example.myquiz.Tests.PersonalFactors
+import com.example.myquiz.Tests.TypeOfFutureProfession
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,8 @@ class StartActivity : AppCompatActivity() {
             val intent = when (position) {
                 0 ->  Intent(this, MakingDecisionsTest::class.java)
                 1 -> Intent(this, DelegationTest::class.java)
+                2 -> Intent(this, PersonalFactors::class.java)
+                3 -> Intent(this, TypeOfFutureProfession::class.java)
 
                 else -> {Intent(this, MakingDecisionsTest::class.java)}
             }
